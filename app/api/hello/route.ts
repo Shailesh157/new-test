@@ -22,7 +22,7 @@ const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx0dHVkcXdsaHRwaGZ2dmdmc2psIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0ODE0OTUxMiwiZXhwIjoyMDYzNzI1NTEyfQ.xS5Om4ang0dFf_WG40V7twnZVD-2x4Y5mqL1DBe-Er4"
 );
 
-export async function POST(request: { json: () => any }) {
+export async function POST(request: any) {
   try {
     const body = await request.json();
     const { audioUrl1, fileName } = body;
