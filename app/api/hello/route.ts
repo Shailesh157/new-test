@@ -4,18 +4,25 @@ import stream from "stream";
 import { promisify } from "util";
 import { execSync } from "child_process";
 import { createClient } from "@supabase/supabase-js";
+import path from "path";
 
 const finished = promisify(stream.finished);
 
 // Set FFmpeg paths
-try {
-  const ffmpegPath = execSync("which ffmpeg").toString().trim();
-  const ffprobePath = execSync("which ffprobe").toString().trim();
-  ffmpeg.setFfmpegPath(ffmpegPath);
-  ffmpeg.setFfprobePath(ffprobePath);
-} catch (err) {
-  console.error("FFmpeg or ffprobe not found in PATH");
-}
+// try {
+//   const ffmpegPath = execSync("which ffmpeg").toString().trim();
+//   const ffprobePath = execSync("which ffprobe").toString().trim();
+//   ffmpeg.setFfmpegPath(ffmpegPath);
+//   ffmpeg.setFfprobePath(ffprobePath);
+// } catch (err) {
+//   console.error("FFmpeg or ffprobe not found in PATH");
+// }
+
+const ffmpegPath = path.join(process.cwd(), "public", "ffmpeg", "ffmpeg");
+const ffprobePath = path.join(process.cwd(), "public", "ffmpeg", "ffprobe");
+
+ffmpeg.setFfmpegPath(ffmpegPath);
+ffmpeg.setFfprobePath(ffprobePath);
 
 const supabase = createClient(
   "https://lttudqwlhtphfvvgfsjl.supabase.co",
