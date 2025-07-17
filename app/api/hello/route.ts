@@ -82,7 +82,7 @@ export async function POST(request: any) {
 
     if (!urlData || !urlData.publicUrl) {
       return new Response(
-        JSON.stringify({ error: "Audio processing failed." }),
+        JSON.stringify({ error: `Audio processing failed3.${error}` }),
         {
           status: 500,
           headers: { "Content-Type": "application/json" },
@@ -100,10 +100,13 @@ export async function POST(request: any) {
       },
     });
   } catch (error) {
-    console.error("Audio processing failed:", error);
-    return new Response(JSON.stringify({ error: "Audio processing failed." }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
+    console.error("Audio processing failed2:", error);
+    return new Response(
+      JSON.stringify({ error: `Audio processing failed3.${error}` }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   }
 }
